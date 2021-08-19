@@ -14,7 +14,7 @@ export enum ButtonType {
 }
 
 interface BaseButtonProps {
-  className?: string;
+  // className?: string;
   disabled?: boolean;
   size?: ButtonSize;
   btnType?: ButtonType;
@@ -42,8 +42,17 @@ const Button: React.FC<BaseButtonProps> = ({
       </a>
     );
   } else {
-    <button className={classes} disabled={disabled}>
-      {children}
-    </button>;
+    return (
+      <button className={classes} disabled={disabled}>
+        {children}
+      </button>
+    );
   }
 };
+
+Button.defaultProps = {
+  disabled: false,
+  btnType: ButtonType.Default,
+};
+
+export default Button;
