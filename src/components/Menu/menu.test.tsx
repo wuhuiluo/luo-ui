@@ -1,5 +1,10 @@
 import React from "react";
-import { fireEvent, render, RenderResult } from "@testing-library/react";
+import {
+  fireEvent,
+  render,
+  RenderResult,
+  cleanup,
+} from "@testing-library/react";
 import Menu, { MenuProps } from "./menu";
 import MenuItem from "./menuItem";
 
@@ -50,6 +55,14 @@ describe("test Menu and MenuItem component", () => {
     expect(thirdItem).toHaveClass("is-active");
     expect(activeElement).not.toHaveClass("is-active");
     expect(testProps.onSelect).toHaveBeenCalledWith(2);
+    fireEvent.click(disabledElement);
+    expect(disabledElement).not.toHaveClass("is-active");
+    expect(testProps.onSelect).not.toHaveBeenCalledWith(1);
   });
-  it("should render vertical mode when mode is set to vertical", () => {});
+  it("should render vertical mode when mode is set to vertical", () => {
+    cleanup();
+    const wrapper = render(generateMenu(testVerProps));
+    const menuElement = wrapper.getByTestId("test-menu");
+    expect(menuElement).toHaveClass("menu-vertical");
+  });
 });

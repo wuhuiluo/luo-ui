@@ -9,7 +9,6 @@ export interface MenuProps {
   mode?: MenuMode;
   style?: React.CSSProperties;
   onSelect?: (selectedIndex: number) => void;
-  children: React.ReactNode;
 }
 
 interface IMenuContext {
