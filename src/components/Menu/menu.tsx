@@ -8,7 +8,7 @@ export interface MenuProps {
   className?: string;
   mode?: MenuMode;
   style?: React.CSSProperties;
-  onSelect: (selectedIndex: number) => void;
+  onSelect?: (selectedIndex: number) => void;
   children: React.ReactNode;
 }
 
