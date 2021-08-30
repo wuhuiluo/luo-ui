@@ -13,7 +13,7 @@ export interface MenuProps {
 }
 
 const Menu: React.FC<MenuProps> = (props) => {
-  const { defaultIndex, className, style, mode, children } = props;
+  const { className, style, mode, children } = props;
   const classes = classNames("wuhuiluo-menu", className, {
     "menu-vertical": mode === "vertical",
   });
