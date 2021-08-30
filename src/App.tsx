@@ -7,10 +7,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Menu defaultIndex={0}>
-          <MenuItem>code link 1</MenuItem>
-          <MenuItem>code link 2</MenuItem>
-          <MenuItem>code link 3</MenuItem>
+        <Menu defaultIndex={0} onSelect={(index) => alert(index)}>
+          <MenuItem index={0}>code link 1</MenuItem>
+          <MenuItem index={1} disabled>
+            code link 2
+          </MenuItem>
+          <MenuItem index={2}>code link 3</MenuItem>
         </Menu>
 
         <Button disabled>我是button</Button>
