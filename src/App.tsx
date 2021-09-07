@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Menu defaultIndex={0} onSelect={(index) => alert(index)}>
+        <Menu defaultOpenSubMenu={['3']} mode="vertical" defaultIndex='0' onSelect={(index) => alert(index)}>
           <MenuItem>code link 1</MenuItem>
           <MenuItem disabled>code link 2</MenuItem>
           <MenuItem>code link 3</MenuItem>
