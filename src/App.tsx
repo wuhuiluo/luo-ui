@@ -1,4 +1,7 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuestionCircle } from "@fortawesome/free-regular-svg-icons";
+
 import Button, { ButtonType, ButtonSize } from "./components/Button/button";
 import Menu from "./components/Menu/menu";
 import MenuItem from "./components/Menu/menuItem";
@@ -7,7 +10,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Menu defaultOpenSubMenu={['3']} defaultIndex='0' onSelect={(index) => alert(index)}>
+        <Menu
+          defaultOpenSubMenu={["3"]}
+          defaultIndex="0"
+          onSelect={(index) => alert(index)}
+        >
           <MenuItem>code link 1</MenuItem>
           <MenuItem disabled>code link 2</MenuItem>
           <MenuItem>code link 3</MenuItem>
@@ -31,6 +38,8 @@ function App() {
         <Button btnType={ButtonType.Danger} size={ButtonSize.Large}>
           百度
         </Button>
+
+        <FontAwesomeIcon icon={faQuestionCircle} size="10x" />
       </header>
     </div>
   );

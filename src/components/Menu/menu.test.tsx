@@ -96,4 +96,7 @@ describe("test Menu and MenuItem component", () => {
       expect(wrapper.queryByText("drop1")).not.toBeVisible();
     });
   });
+  it('vertical dropdown', () => {
+    
+  })
 });
