@@ -1,11 +1,14 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faQuestionCircle } from "@fortawesome/free-regular-svg-icons";
-
+import Icon from "./components/Icon/icon";
 import Button, { ButtonType, ButtonSize } from "./components/Button/button";
 import Menu from "./components/Menu/menu";
 import MenuItem from "./components/Menu/menuItem";
 import SubMenu from "./components/Menu/subMenu";
+
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+library.add(fas);
+
 function App() {
   return (
     <div className="App">
@@ -13,6 +16,7 @@ function App() {
         <Menu
           defaultOpenSubMenu={["3"]}
           defaultIndex="0"
+          mode="vertical"
           onSelect={(index) => alert(index)}
         >
           <MenuItem>code link 1</MenuItem>
@@ -39,7 +43,7 @@ function App() {
           百度
         </Button>
 
-        <FontAwesomeIcon icon={faQuestionCircle} size="10x" />
+        <Icon icon="life-ring" theme="danger" size="10x" />
       </header>
     </div>
   );
