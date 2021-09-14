@@ -14,7 +14,7 @@ const wrapperStyle: React.CSSProperties = {
 const storyWrapper = (stroyFn: any) => {
   return (
     <div style={wrapperStyle}>
-      <h3>组件演示</h3>
+      <h3>luo-ui</h3>
       {stroyFn()}
     </div>
   );
