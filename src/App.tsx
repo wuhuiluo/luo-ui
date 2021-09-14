@@ -1,6 +1,9 @@
 import React from "react";
 import Icon from "./components/Icon/icon";
-import Button, { ButtonType, ButtonSize } from "./components/Button/button";
+import Button, {
+  ButtonType,
+  ButtonSize,
+} from "../src/components/Button/button";
 import Menu from "./components/Menu/menu";
 import MenuItem from "./components/Menu/menuItem";
 import SubMenu from "./components/Menu/subMenu";
