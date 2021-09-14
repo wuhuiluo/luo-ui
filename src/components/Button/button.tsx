@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, AnchorHTMLAttributes } from "react";
+import React, { FC, ButtonHTMLAttributes, AnchorHTMLAttributes } from "react";
 import classnames from "classnames";
 
 // 按钮大小
@@ -28,7 +28,7 @@ type AnchorButtonProps = BaseButtonProps & AnchorHTMLAttributes<HTMLElement>;
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 
 // 使用react-docgen-typescript-loader的bug，只能使用FC，不能React.FC
-export const Button: React.FC<ButtonProps> = (props) => {
+export const Button: FC<ButtonProps> = (props) => {
   const {
     disabled,
     size,
@@ -39,10 +39,10 @@ export const Button: React.FC<ButtonProps> = (props) => {
     ...resetProps
   } = props;
 
-  const classes = classnames("btn", className, {
+  const classes = classnames("lin-btn", className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
-    "disabled": btnType === "link" && disabled,
+    disabled: btnType === "link" && disabled,
   });
   if (btnType === "link" && href) {
     return (
