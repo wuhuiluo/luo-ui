@@ -1,59 +1,58 @@
-import React from "react";
-import classNames from "classnames";
+import React, { ButtonHTMLAttributes, AnchorHTMLAttributes } from "react";
+import classnames from "classnames";
 
-export enum ButtonSize {
-  Large = "lg",
-  Small = "sm",
-}
+// 按钮大小
+export type ButtonSize = "lg" | "sm";
 
-export enum ButtonType {
-  Primary = "primary",
-  Default = "default",
-  Danger = "danger",
-  Link = "link",
-}
+export type ButtonType = "primary" | "default" | "danger" | "link";
 
 interface BaseButtonProps {
+  /** 自定义类名 */
   className?: string;
+  /** 设置Button 的禁用 */
   disabled?: boolean;
+  /** 设置Button 的大小 */
   size?: ButtonSize;
+  /** 设置Button 的类型 */
   btnType?: ButtonType;
-  children?: React.ReactNode;
+  children: React.ReactNode;
+  /** 当btnType为link时，必填 */
   href?: string;
 }
 
-type NativeButtonProps = React.ButtonHTMLAttributes<HTMLElement> &
-  BaseButtonProps;
+// 并集
+type NativeButtonProps = BaseButtonProps & ButtonHTMLAttributes<HTMLElement>;
+type AnchorButtonProps = BaseButtonProps & AnchorHTMLAttributes<HTMLElement>;
 
-type AnchorButtonProps = React.AnchorHTMLAttributes<HTMLElement> &
-  BaseButtonProps;
-
+// Partial：typescript全局函数，将属性全部变成可选的
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 
-const Button: React.FC<ButtonProps> = ({
-  disabled,
-  className,
-  size,
-  btnType,
-  children,
-  href,
-  ...restProps
-}) => {
-  const classes = classNames("btn", className, {
+// 使用react-docgen-typescript-loader的bug，只能使用FC，不能React.FC
+export const Button: React.FC<ButtonProps> = (props) => {
+  const {
+    disabled,
+    size,
+    btnType,
+    children,
+    href,
+    className,
+    ...resetProps
+  } = props;
+
+  const classes = classnames("btn", className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
-    disabled: btnType === ButtonType.Link && disabled,
+    "disabled": btnType === "link" && disabled,
   });
-
-  if (btnType === ButtonType.Link && href) {
+  if (btnType === "link" && href) {
     return (
-      <a href={href} className={classes} {...restProps}>
+      <a href={href} className={classes} {...resetProps}>
         {children}
       </a>
     );
   } else {
     return (
-      <button className={classes} disabled={disabled} {...restProps}>
+      <button className={classes} disabled={disabled} {...resetProps}>
         {children}
       </button>
     );
@@ -62,7 +61,7 @@ const Button: React.FC<ButtonProps> = ({
 
 Button.defaultProps = {
   disabled: false,
-  btnType: ButtonType.Default,
+  btnType: "default",
 };
 
 export default Button;
