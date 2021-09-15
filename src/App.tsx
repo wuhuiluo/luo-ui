@@ -1,12 +1,11 @@
 import React from "react";
 import Icon from "./components/Icon/icon";
-import Button, {
-  ButtonType,
-  ButtonSize,
-} from "../src/components/Button/button";
+import Button from "../src/components/Button/button";
 import Menu from "./components/Menu/menu";
 import MenuItem from "./components/Menu/menuItem";
 import SubMenu from "./components/Menu/subMenu";
+
+import Alert from "./components/Alert/alert";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
@@ -15,6 +14,7 @@ library.add(fas);
 function App() {
   return (
     <div className="App">
+      <Alert closeable></Alert>
       <header className="App-header">
         <Menu
           defaultOpenSubMenu={["3"]}
@@ -33,17 +33,8 @@ function App() {
 
         <Button disabled>我是button</Button>
         <Button>Button</Button>
-        <Button btnType={ButtonType.Primary} size={ButtonSize.Large}>
+        <Button btnType="primary" size="lg">
           我是button
-        </Button>
-        <Button btnType={ButtonType.Link} href="www.baidu.com" disabled>
-          百度
-        </Button>
-        <Button btnType={ButtonType.Link} href="www.baidu.com1">
-          百度
-        </Button>
-        <Button btnType={ButtonType.Danger} size={ButtonSize.Large}>
-          百度
         </Button>
 
         <Icon icon="life-ring" theme="danger" size="10x" />

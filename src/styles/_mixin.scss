@@ -63,3 +63,8 @@
     transform-origin: $origin;
   }
 }
+
+@mixin alert-style($background, $border) {
+  background: $background;
+  border-color: $border;
+}
