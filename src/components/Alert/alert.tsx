@@ -3,7 +3,7 @@ import classNames from "classnames";
 import Icon from "../Icon/icon";
 
 export type AlertType = "success" | "default" | "danger" | "warning";
-interface AlertProps {
+export interface AlertProps {
   className?: string;
   title?: string;
   description?: string;
@@ -37,13 +37,13 @@ const Alert: React.FC<AlertProps> = (props) => {
   };
 
   const closeIcon = closeable ? (
-    <button className="icon-times" onClick={handleClose}>
+    <button data-testid="close" className="icon-times" onClick={handleClose}>
       <Icon icon="times" theme="dark" size="sm" />
     </button>
   ) : null;
 
   return !close ? (
-    <div className={classes}>
+    <div data-testid="alert" className={classes}>
       <span className="alert-title">{title}</span>
       <span className="alert-desc">{description}</span>
       {closeIcon}
