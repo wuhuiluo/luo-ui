@@ -1,27 +1,27 @@
 import { configure, addDecorator, addParameters } from "@storybook/react";
-// import { withInfo } from '@storybook/addon-info';
+import { withInfo } from "@storybook/addon-info";
+
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 library.add(fas);
+import "./fix_info.scss";
 import "../src/styles/index.scss";
 import React from "react";
 
-const wrapperStyle: React.CSSProperties = {
+const wrapperStyle = {
   padding: "20px 40px",
 };
 
-const storyWrapper = (stroyFn: any) => {
+const storyWrapper = (stroyFn) => {
   return (
     <div style={wrapperStyle}>
-      <h3>luo-ui</h3>
+      <h3>组件演示</h3>
       {stroyFn()}
     </div>
   );
 };
 addDecorator(storyWrapper);
-// addDecorator(withInfo);
-// addDecorator(withInfo); 
-
+addDecorator(withInfo);
 addParameters({ info: { inline: true, header: false } });
 
 const loaderFn = () => {
