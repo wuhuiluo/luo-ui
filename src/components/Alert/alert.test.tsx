@@ -20,4 +20,35 @@ describe("Alert 组件", () => {
     expect(testProps.onClose).toHaveBeenCalled();
     expect(closeBtn).not.toBeInTheDocument();
   });
+
+  it("测试传入type的情况", () => {
+    const testProps: AlertProps = {
+      description: "alert提示语",
+      onClose: jest.fn(),
+      type: "warning",
+      closeable: true,
+    };
+    const wrapper = render(<Alert {...testProps} />);
+    const element = wrapper.getByTestId("alert");
+    const closeBtn = wrapper.getByTestId("close");
+    expect(element).toBeInTheDocument();
+    expect(closeBtn).toBeInTheDocument();
+    expect(element).toHaveClass("alert-warning");
+
+    fireEvent.click(closeBtn);
+    expect(testProps.onClose).toHaveBeenCalled();
+    expect(closeBtn).not.toBeInTheDocument();
+  });
+
+  it("测试closeable为false的情况", () => {
+    const testProps: AlertProps = {
+      description: "alert提示语",
+      closeable: false,
+    };
+    const wrapper = render(<Alert {...testProps} />);
+    const element = wrapper.getByTestId("alert");
+    const closeBtn = element.querySelector('[data-testid="close"]');
+    expect(element).toBeInTheDocument();
+    expect(closeBtn).toBeFalsy();
+  });
 });
