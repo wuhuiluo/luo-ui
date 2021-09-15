@@ -14,7 +14,7 @@ library.add(fas);
 function App() {
   return (
     <div className="App">
-      <Alert closeable></Alert>
+      <Alert title='我是标题' description="输入666" closeable></Alert>
       <header className="App-header">
         <Menu
           defaultOpenSubMenu={["3"]}

@@ -2,7 +2,7 @@ $alert-colors: (
   "default": $primary,
   "success": $success,
   "warning": $warning,
-  "danger": $danger
+  "danger": $danger,
 );
 
 .alert {
@@ -45,4 +45,14 @@ $alert-colors: (
 
   &-icon {
   }
+}
+
+.icon-times {
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 50%;
+  font-size: 12px;
+  background-color: #fff !important;
 }

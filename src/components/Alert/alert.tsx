@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import classNames from "classnames";
+import Icon from "../Icon/icon";
 
 export type AlertType = "success" | "default" | "danger" | "warning";
-
 interface AlertProps {
   className?: string;
   title?: string;
@@ -37,8 +37,8 @@ const Alert: React.FC<AlertProps> = (props) => {
   };
 
   const closeIcon = closeable ? (
-    <button onClick={handleClose}>
-      <span className="alert-icon">关</span>
+    <button className="icon-times" onClick={handleClose}>
+      <Icon icon="times" theme="dark" size="sm" />
     </button>
   ) : null;
 
@@ -52,7 +52,7 @@ const Alert: React.FC<AlertProps> = (props) => {
 };
 
 Alert.defaultProps = {
-  type: "default",
+  type: "success",
   closeable: false,
 };
 
