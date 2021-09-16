@@ -1,4 +1,9 @@
-import React, { FC, ReactElement, InputHTMLAttributes } from "react";
+import React, {
+  FC,
+  ReactElement,
+  InputHTMLAttributes,
+  ChangeEvent,
+} from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import classNames from "classnames";
 import Icon from "../Icon/icon";
@@ -17,7 +22,16 @@ export interface InputProps
   append?: string | ReactElement;
   /** 可扩展的类名 */
   className?: string;
+  /** input输入发生变化触发的回调 */
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
+
+const fixValue = (value: any) => {
+  if (typeof value === "undefined" || value === null) {
+    return "";
+  }
+  return value;
+};
 
 export const Input: FC<InputProps> = (props) => {
   const {
@@ -34,6 +48,11 @@ export const Input: FC<InputProps> = (props) => {
     [`luo-input-size-${size}`]: size,
     "luo-input-group": prepend || append,
   });
+  // 防止value和defaultValue同时出现
+  if ("value" in props) {
+    delete props.defaultValue;
+    restProps.value = fixValue(props.value);
+  }
   return (
     <div>
       <div className={classes} style={style}>
