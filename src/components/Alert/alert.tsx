@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import classNames from "classnames";
 import Icon from "../Icon/icon";
 
@@ -17,7 +17,7 @@ export interface AlertProps {
   closeable?: boolean;
 }
 
-const Alert: React.FC<AlertProps> = (props) => {
+export const Alert: FC<AlertProps> = (props) => {
   const {
     className,
     title,
