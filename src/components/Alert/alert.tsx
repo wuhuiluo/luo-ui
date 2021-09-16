@@ -4,12 +4,17 @@ import Icon from "../Icon/icon";
 
 export type AlertType = "success" | "default" | "danger" | "warning";
 export interface AlertProps {
+  /** 自定义类名 */
   className?: string;
+  /** 自定义标题 */
   title?: string;
+  /** 自定义描述内容 */
   description?: string;
+  /** 自定义类型 */
   type?: AlertType;
   onClose?: React.MouseEventHandler<HTMLButtonElement>;
-  closeable?: Boolean;
+  /** 是否需要关闭 */
+  closeable?: boolean;
 }
 
 const Alert: React.FC<AlertProps> = (props) => {

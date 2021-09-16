@@ -26,7 +26,7 @@ describe("Alert 组件", () => {
       description: "alert提示语",
       onClose: jest.fn(),
       type: "warning",
-      closeable: true,
+      closeable: true
     };
     const wrapper = render(<Alert {...testProps} />);
     const element = wrapper.getByTestId("alert");

@@ -53,7 +53,7 @@ const alertWithTitle = () => (
   />
 );
 
-storiesOf("Alert 警告提示", module)
+storiesOf("Alert Component", module)
   .addParameters({
     info: {
       text: `
