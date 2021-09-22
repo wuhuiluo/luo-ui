@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import Input from "./input";
-
+const ControlledInput = () => {
+  const [value, setValue] = useState("");
+  return (
+    <Input
+      value={value}
+      onChange={(e) => {
+        setValue(e.target.value);
+      }}
+    />
+  );
+};
 const defaultInput = () => (
-  <Input
-    className="width-500"
-    onChange={action("change")}
-    placeholder="请输入"
-  />
+  <>
+    <Input
+      className="width-500"
+      onChange={action("change")}
+      placeholder="请输入"
+    />
+    <ControlledInput />
+  </>
 );
 
 const InputWithDisabled = () => (
