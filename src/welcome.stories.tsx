@@ -7,8 +7,6 @@ storiesOf("Welcome Page", module).add(
     return (
       <>
         <h2>欢迎来到 luo-ui 组件库</h2>
-        <h4>安装试一试</h4>
-        <code>npm install luo-ui --save</code>
       </>
     );
   },

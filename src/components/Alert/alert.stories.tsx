@@ -54,16 +54,6 @@ const alertWithTitle = () => (
 );
 
 storiesOf("Alert Component", module)
-  .addParameters({
-    info: {
-      text: `
-    ## 引用方法
-    ~~~js
-    import {Alert} from 'luo-ui'
-    ~~~
-    `,
-    },
-  })
   .add("默认的 Alert", defaultAlert)
   .add("不同类型的 Alert", alertWithType)
   .add("可关闭的 Alert", alertWithCloseble)
