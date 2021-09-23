@@ -7,9 +7,9 @@ interface DataSourceObject {
 
 export type DataSourceType<T = {}> = T & DataSourceObject;
 export interface AutoCompleteProps extends Omit<InputProps, "onSelect"> {
-  fetchSuggestions: (str: string) => string[];
-  onSelect?: (item: string) => void;
-  renderOption?: (item: string) => ReactElement;
+  fetchSuggestions: (str: string) => DataSourceType[];
+  onSelect?: (item: DataSourceType) => void;
+  renderOption?: (item: DataSourceType) => ReactElement;
 }
 
 export const AutoComplete: FC<AutoCompleteProps> = (props) => {
@@ -21,8 +21,7 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
     ...restProps
   } = props;
   const [inputValue, setInputValue] = useState(value);
-  const [suggestions, setSuggestions] = useState<string[]>([]);
-  console.log(suggestions);
+  const [suggestions, setSuggestions] = useState<DataSourceType[]>([]);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.trim();
     setInputValue(value);
@@ -33,12 +32,12 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
       setSuggestions([]);
     }
   };
-  const handleSelect = (item: string) => {
-    setInputValue(item);
+  const handleSelect = (item: DataSourceType) => {
+    setInputValue(item.value);
     setSuggestions([]);
     onSelect && onSelect(item);
   };
-  const renderTemplate = (item: string) => {
+  const renderTemplate = (item: DataSourceType) => {
     return renderOption ? renderOption(item) : item;
   };
   const generateDropdown = () => {
