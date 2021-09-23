@@ -2,6 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { AutoComplete } from "./AutoComplete";
+import { render } from "@testing-library/react";
 
 const SimpleComplete = () => {
   const lankers = [
@@ -23,10 +24,15 @@ const SimpleComplete = () => {
     return lankers.filter((name) => name.includes(query));
   };
 
+  const renderOption = (item: string) => {
+    return <h2>name: {item}</h2>;
+  };
+
   return (
     <AutoComplete
       onSelect={action("selected")}
       fetchSuggestions={handleFetch}
+      renderOption={renderOption}
     />
   );
 };
