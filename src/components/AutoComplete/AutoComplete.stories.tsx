@@ -30,7 +30,7 @@ const AsyncComplete = () => {
     console.log(item);
     return (
       <>
-        <h2>name: {item.login}</h2>
+        <h2>name: {item.value}</h2>
         <p>github地址: {item.url}</p>
       </>
     );
