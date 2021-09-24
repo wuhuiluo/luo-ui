@@ -11,6 +11,7 @@ import className from "classnames";
 import Input, { InputProps } from "../Input/input";
 import Icon from "../Icon/icon";
 import useDebounce from "../../hooks/useDebounce";
+import useClickOutside from "../../hooks/useClickOutside";
 interface DataSourceObject {
   value: string;
 }
@@ -37,8 +38,9 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
   const [loading, setLoading] = useState(false);
   const [highLightIndex, sethighLightIndex] = useState(-1);
   const triggerSearch = useRef(false);
+  const componentRef = useRef<HTMLDivElement>(null);
   const debounceValue = useDebounce(inputValue, 500);
-
+  useClickOutside(componentRef, () => setSuggestions([]));
   useEffect(() => {
     if (debounceValue && triggerSearch) {
       const results = fetchSuggestions(debounceValue);
@@ -122,7 +124,7 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
     );
   };
   return (
-    <div className="luo-autu-complete">
+    <div className="luo-autu-complete" ref={componentRef}>
       <Input
         onKeyDown={handleKeyDown}
         onChange={handleChange}
